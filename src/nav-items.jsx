@@ -1,7 +1,6 @@
 import { HomeIcon, BarChartIcon, PackageIcon, UsersIcon, DollarSignIcon, TruckIcon, ShieldIcon } from "lucide-react";
 
 // Import all page components
-import Index from "./pages/Index";
 import ProjectsDashboard from "./pages/ProjectsDashboard";
 import MaterialsDashboard from "./pages/MaterialsDashboard";
 import WorkforceDashboard from "./pages/WorkforceDashboard";
@@ -9,12 +8,14 @@ import FinanceDashboard from "./pages/FinanceDashboard";
 import EquipmentDashboard from "./pages/EquipmentDashboard";
 import SafetyDashboard from "./pages/SafetyDashboard";
 
+// Remove the import of Index component
+
 export const navItems = [
   {
     title: "Dashboard",
     to: "/",
     icon: <HomeIcon className="h-4 w-4" />,
-    page: <Index />,
+    // Remove the reference to Index component here
   },
   {
     title: "Project Management",
