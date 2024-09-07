@@ -2,6 +2,7 @@ import Layout from "@/components/Layout";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { useQuery } from "@tanstack/react-query";
 import { BarChart, Bar, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
+import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table";
 
 const fetchMaterialsData = async () => {
   // This is a mock function. In a real application, you would fetch data from an API.
@@ -16,6 +17,13 @@ const fetchMaterialsData = async () => {
       { name: 'Bricks', usage: 5000 },
       { name: 'Sand', usage: 2000 },
       { name: 'Gravel', usage: 1500 },
+    ],
+    inventory: [
+      { id: 1, name: 'Cement', quantity: 500, unit: 'bags', reorderLevel: 100 },
+      { id: 2, name: 'Steel', quantity: 1000, unit: 'tons', reorderLevel: 200 },
+      { id: 3, name: 'Bricks', quantity: 10000, unit: 'pieces', reorderLevel: 2000 },
+      { id: 4, name: 'Sand', quantity: 300, unit: 'cubic meters', reorderLevel: 50 },
+      { id: 5, name: 'Gravel', quantity: 250, unit: 'cubic meters', reorderLevel: 40 },
     ],
   };
 };
@@ -66,7 +74,7 @@ const MaterialsDashboard = () => {
           </CardContent>
         </Card>
       </div>
-      <Card>
+      <Card className="mb-6">
         <CardHeader>
           <CardTitle>Material Usage</CardTitle>
         </CardHeader>
@@ -80,6 +88,33 @@ const MaterialsDashboard = () => {
               <Bar dataKey="usage" fill="#8884d8" />
             </BarChart>
           </ResponsiveContainer>
+        </CardContent>
+      </Card>
+      <Card>
+        <CardHeader>
+          <CardTitle>Current Inventory</CardTitle>
+        </CardHeader>
+        <CardContent>
+          <Table>
+            <TableHeader>
+              <TableRow>
+                <TableHead>Material</TableHead>
+                <TableHead>Quantity</TableHead>
+                <TableHead>Unit</TableHead>
+                <TableHead>Reorder Level</TableHead>
+              </TableRow>
+            </TableHeader>
+            <TableBody>
+              {data.inventory.map((item) => (
+                <TableRow key={item.id}>
+                  <TableCell>{item.name}</TableCell>
+                  <TableCell>{item.quantity}</TableCell>
+                  <TableCell>{item.unit}</TableCell>
+                  <TableCell>{item.reorderLevel}</TableCell>
+                </TableRow>
+              ))}
+            </TableBody>
+          </Table>
         </CardContent>
       </Card>
     </Layout>

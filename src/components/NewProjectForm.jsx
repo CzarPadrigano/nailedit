@@ -9,11 +9,12 @@ const NewProjectForm = ({ onSubmit, onCancel }) => {
   const [projectName, setProjectName] = useState('');
   const [projectDescription, setProjectDescription] = useState('');
   const [budget, setBudget] = useState('');
+  const [plan, setPlan] = useState('');
   const { toast } = useToast();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!projectName || !projectDescription || !budget) {
+    if (!projectName || !projectDescription || !budget || !plan) {
       toast({
         title: "Error",
         description: "Please fill in all fields",
@@ -21,7 +22,7 @@ const NewProjectForm = ({ onSubmit, onCancel }) => {
       });
       return;
     }
-    onSubmit({ projectName, projectDescription, budget: parseFloat(budget) });
+    onSubmit({ projectName, projectDescription, budget: parseFloat(budget), plan });
   };
 
   return (
@@ -52,6 +53,15 @@ const NewProjectForm = ({ onSubmit, onCancel }) => {
           value={budget}
           onChange={(e) => setBudget(e.target.value)}
           placeholder="Enter project budget"
+        />
+      </div>
+      <div>
+        <Label htmlFor="plan">Project Plan</Label>
+        <Textarea
+          id="plan"
+          value={plan}
+          onChange={(e) => setPlan(e.target.value)}
+          placeholder="Enter project plan"
         />
       </div>
       <div className="flex justify-end space-x-2">
