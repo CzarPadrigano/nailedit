@@ -1,11 +1,13 @@
 import { HomeIcon, BarChartIcon, PackageIcon, UsersIcon, DollarSignIcon, TruckIcon, ShieldIcon } from "lucide-react";
-import Index from "./pages/Index.jsx";
-import ProjectsDashboard from "./pages/ProjectsDashboard.jsx";
-import MaterialsDashboard from "./pages/MaterialsDashboard.jsx";
-import WorkforceDashboard from "./pages/WorkforceDashboard.jsx";
-import FinanceDashboard from "./pages/FinanceDashboard.jsx";
-import EquipmentDashboard from "./pages/EquipmentDashboard.jsx";
-import SafetyDashboard from "./pages/SafetyDashboard.jsx";
+
+// Import all page components
+import Index from "./pages/Index";
+import ProjectsDashboard from "./pages/ProjectsDashboard";
+import MaterialsDashboard from "./pages/MaterialsDashboard";
+import WorkforceDashboard from "./pages/WorkforceDashboard";
+import FinanceDashboard from "./pages/FinanceDashboard";
+import EquipmentDashboard from "./pages/EquipmentDashboard";
+import SafetyDashboard from "./pages/SafetyDashboard";
 
 export const navItems = [
   {
