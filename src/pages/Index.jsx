@@ -34,6 +34,15 @@ const Index = () => {
     { name: 'Incidents', value: data.safetyIncidents },
   ];
 
+  const moduleImages = {
+    projects: "https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwcHJvamVjdHxlbnwwfHwwfHx8MA%3D%3D",
+    materials: "https://images.unsplash.com/photo-1581092918056-0c4c3acd3789?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Y29uc3RydWN0aW9uJTIwbWF0ZXJpYWxzfGVufDB8fDB8fHww",
+    workforce: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29uc3RydWN0aW9uJTIwd29ya2VyfGVufDB8fDB8fHww",
+    finance: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmluYW5jZXxlbnwwfHwwfHx8MA%3D%3D",
+    equipment: "https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29uc3RydWN0aW9uJTIwZXF1aXBtZW50fGVufDB8fDB8fHww",
+    safety: "https://images.unsplash.com/photo-1519753960728-3c8e2d7c5b5f?w=800&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8c2FmZXR5JTIwaGFyZCUyMGhhdHxlbnwwfHwwfHx8MA%3D%3D"
+  };
+
   return (
     <Layout>
       <h1 className="text-4xl font-bold mb-6 text-center">Welcome to Nailed It!</h1>
@@ -67,22 +76,15 @@ const Index = () => {
         </CardContent>
       </Card>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {[
-          { name: 'projects', image: '/images/projects.jpg' },
-          { name: 'materials', image: '/images/materials.jpg' },
-          { name: 'workforce', image: '/images/workforce.jpg' },
-          { name: 'finance', image: '/images/finance.jpg' },
-          { name: 'equipment', image: '/images/equipment.jpg' },
-          { name: 'safety', image: '/images/safety.jpg' }
-        ].map((module) => (
-          <Link key={module.name} to={`/${module.name}`}>
+        {Object.entries(moduleImages).map(([name, image]) => (
+          <Link key={name} to={`/${name}`}>
             <Card className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle>{module.name.charAt(0).toUpperCase() + module.name.slice(1)} Management</CardTitle>
+                <CardTitle>{name.charAt(0).toUpperCase() + name.slice(1)} Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <img src={module.image} alt={module.name} className="w-full h-40 object-cover rounded-md mb-4" />
-                <p>View {module.name} dashboard</p>
+                <img src={image} alt={name} className="w-full h-40 object-cover rounded-md mb-4" />
+                <p>View {name} dashboard</p>
               </CardContent>
             </Card>
           </Link>
