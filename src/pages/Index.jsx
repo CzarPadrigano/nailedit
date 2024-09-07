@@ -36,15 +36,16 @@ const Index = () => {
 
   return (
     <Layout>
-      <h1 className="text-3xl font-bold mb-6">BuildSmart Dashboard</h1>
+      <h1 className="text-4xl font-bold mb-6 text-center">Welcome to Nailed It!</h1>
+      <p className="text-xl text-center mb-8">Your one-stop solution for construction management</p>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-6">
         {Object.entries(data).map(([key, value]) => (
-          <Card key={key}>
+          <Card key={key} className="hover:shadow-lg transition-shadow duration-300">
             <CardHeader>
               <CardTitle>{key.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase())}</CardTitle>
             </CardHeader>
             <CardContent>
-              <p className="text-2xl font-bold">{value}</p>
+              <p className="text-3xl font-bold">{value}</p>
             </CardContent>
           </Card>
         ))}
@@ -66,14 +67,22 @@ const Index = () => {
         </CardContent>
       </Card>
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {['projects', 'materials', 'workforce', 'finance', 'equipment', 'safety'].map((module) => (
-          <Link key={module} to={`/${module}`}>
+        {[
+          { name: 'projects', image: '/images/projects.jpg' },
+          { name: 'materials', image: '/images/materials.jpg' },
+          { name: 'workforce', image: '/images/workforce.jpg' },
+          { name: 'finance', image: '/images/finance.jpg' },
+          { name: 'equipment', image: '/images/equipment.jpg' },
+          { name: 'safety', image: '/images/safety.jpg' }
+        ].map((module) => (
+          <Link key={module.name} to={`/${module.name}`}>
             <Card className="hover:shadow-lg transition-shadow duration-300">
               <CardHeader>
-                <CardTitle>{module.charAt(0).toUpperCase() + module.slice(1)} Management</CardTitle>
+                <CardTitle>{module.name.charAt(0).toUpperCase() + module.name.slice(1)} Management</CardTitle>
               </CardHeader>
               <CardContent>
-                <p>View {module} dashboard</p>
+                <img src={module.image} alt={module.name} className="w-full h-40 object-cover rounded-md mb-4" />
+                <p>View {module.name} dashboard</p>
               </CardContent>
             </Card>
           </Link>

@@ -5,6 +5,9 @@ const Layout = ({ children }) => {
   return (
     <div className="flex h-screen bg-gray-100">
       <aside className="w-64 bg-white shadow-md">
+        <div className="p-4">
+          <h1 className="text-2xl font-bold text-center">Nailed It!</h1>
+        </div>
         <nav className="mt-5">
           <ul>
             {navItems.map((item) => (
